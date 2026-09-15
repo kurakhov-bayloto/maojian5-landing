@@ -249,7 +249,10 @@ ym(METRIKA,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",re
   }
   /* first touch wins, so the libraries are ready well before a CTA click */
   ['touchstart','scroll','mousemove','keydown'].forEach(function(e){addEventListener(e,boot,{once:true,passive:true})});
-  if(document.readyState==='complete')boot();else addEventListener('load',boot);
+  /* otherwise wait for an idle moment past the hero paint, so parsing the
+     243KB of tracking libraries cannot delay LCP */
+  function idle(){window.requestIdleCallback?requestIdleCallback(boot,{timeout:2500}):setTimeout(boot,900)}
+  if(document.readyState==='complete')idle();else addEventListener('load',idle);
 })();
 
 /* ---------- Keitaro click tracking + Contact event ---------- */
