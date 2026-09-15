@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#1A1A1A">
 <meta name="robots" content="noindex, nofollow">
-<title data-i18n="page_title">Интерактивный формат для отдыха и развлечения</title>
-<meta name="description" data-i18n-attr="content" data-i18n="page_desc" content="Игровой формат для развлечения: собери комбинацию и открой результат в демо-режиме.">
+<title data-i18n="page_title">Эс алуу жана көңүл ачуу үчүн интерактивдүү формат</title>
+<meta name="description" data-i18n-attr="content" data-i18n="page_desc" content="Көңүл ачуу үчүн оюн форматы: комбинацияны жыйнап, натыйжаны демо-режимде ач.">
 <link rel="preload" as="image" href="hero.webp" fetchpriority="high">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -21,7 +21,6 @@ html{-webkit-text-size-adjust:100%}
 body{
   min-height:100dvh;
   font:400 16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  font-display:swap;
   color:var(--text);background:var(--bg);
   background-image:radial-gradient(ellipse 85% 48% at 50% 0%,rgba(30,15,47,.95) 0%,transparent 70%),linear-gradient(180deg,var(--bg2) 0%,var(--bg3) 46%,var(--bg) 100%);
   background-attachment:fixed;
@@ -33,6 +32,7 @@ body{
 /* ---------- header ---------- */
 .hdr{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px 0;max-width:var(--container);margin:0 auto}
 .hdr img{display:block;height:30px;width:28px;opacity:.95}
+.hdr-right{display:flex;align-items:center;gap:10px}
 .lang{display:flex;gap:2px;padding:3px;background:rgba(255,255,255,.06);border:1px solid var(--card-line);border-radius:100px}
 .lang button{font:700 12px/1 inherit;letter-spacing:.04em;padding:7px 13px;border:0;border-radius:100px;background:transparent;color:var(--dim);cursor:pointer;transition:background .18s,color .18s}
 .lang button.on{background:var(--accent);color:#08201F}
@@ -40,20 +40,19 @@ body{
 
 /* ---------- hero ---------- */
 .hero{padding:18px 0 4px;text-align:center}
-.hero-img{display:block;margin:0 auto;height:auto;width:158px;max-width:46vw;filter:drop-shadow(0 14px 34px rgba(60,199,196,.18))}
+.hero-img{display:block;margin:0 auto;height:auto;width:158px;max-width:46vw;aspect-ratio:306/491;filter:drop-shadow(0 14px 34px rgba(60,199,196,.18))}
 h1{font:800 clamp(25px,7.1vw,34px)/1.22 inherit;letter-spacing:-.015em;margin:14px 0 0;text-wrap:balance}
 .sub{font-size:15px;color:var(--muted);margin-top:10px;text-wrap:balance}
-.glow{position:absolute;inset:auto;pointer-events:none}
 
 /* ---------- filters + cards ---------- */
 .sect{margin-top:26px}
 .sect-label{font:700 11px/1 inherit;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;min-height:33px}
 .chip{font:700 12px/1 inherit;padding:8px 14px;border-radius:100px;border:1px solid var(--card-line);background:var(--card);color:var(--muted);cursor:pointer;transition:border-color .18s,color .18s,background .18s,transform .12s}
 .chip:active{transform:scale(.96)}
 .chip.on{border-color:var(--accent-line);background:var(--accent-soft);color:var(--accent)}
 .cards{display:flex;flex-direction:column;gap:10px}
-.card{display:flex;align-items:center;gap:14px;padding:14px;border-radius:var(--radius);border:1px solid var(--card-line);background:var(--card);color:var(--text);text-decoration:none;opacity:0;transform:translateY(12px);animation:rise .42s ease forwards;transition:border-color .18s,background .18s,transform .14s}
+.card{display:flex;align-items:center;gap:14px;min-height:76px;padding:14px;border-radius:var(--radius);border:1px solid var(--card-line);background:var(--card);color:var(--text);text-decoration:none;opacity:0;transform:translateY(12px);animation:rise .42s ease forwards;transition:border-color .18s,background .18s,transform .14s}
 .card:nth-child(2){animation-delay:.07s}
 .card:nth-child(3){animation-delay:.14s}
 .card:active{transform:scale(.985);background:rgba(255,255,255,.085)}
@@ -69,17 +68,14 @@ h1{font:800 clamp(25px,7.1vw,34px)/1.22 inherit;letter-spacing:-.015em;margin:14
 .about{margin-top:26px;padding:16px;border-radius:var(--radius);border:1px solid var(--card-line);background:var(--card);font-size:14px;color:var(--muted)}
 .cta2{display:block;margin-top:18px;padding:16px;border-radius:var(--radius);border:1px solid var(--accent-line);background:transparent;color:var(--accent);font:700 15px/1 inherit;text-align:center;text-decoration:none;transition:background .18s}
 .cta2:active{background:var(--accent-soft)}
-details{margin-top:18px;border:1px solid var(--card-line);border-radius:var(--radius);background:var(--card);overflow:hidden}
+details{margin:18px 0 24px;border:1px solid var(--card-line);border-radius:var(--radius);background:var(--card);overflow:hidden}
 summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px;font:700 14px/1 inherit;color:var(--text);cursor:pointer;list-style:none}
 summary::-webkit-details-marker{display:none}
 summary::after{content:'';width:8px;height:8px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg) translateY(-2px);transition:transform .22s}
 details[open] summary::after{transform:rotate(-135deg) translateY(-2px)}
 .info{padding:0 15px 15px;font-size:13px;color:var(--muted)}
 .info p+p{margin-top:8px}
-
-/* ---------- footer ---------- */
-footer{margin-top:24px;padding:18px 18px calc(22px + env(safe-area-inset-bottom,0px));border-top:1px solid rgba(255,255,255,.07);text-align:center}
-.legal{font-size:11px;line-height:1.65;color:rgba(255,255,255,.46);max-width:var(--container);margin:0 auto}
+.info .legal{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:12px;color:rgba(255,255,255,.5)}
 
 /* ---------- fixed CTA ---------- */
 .cta-bar{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:12px 18px calc(12px + env(safe-area-inset-bottom,0px));background:linear-gradient(180deg,rgba(26,26,26,0) 0%,rgba(20,18,26,.92) 32%,#141219 100%);backdrop-filter:blur(8px);transition:transform .2s}
@@ -106,7 +102,7 @@ footer{margin-top:24px;padding:18px 18px calc(22px + env(safe-area-inset-bottom,
   h1{font-size:40px}
   .cards{grid-template-columns:repeat(3,1fr)}
   .cards .card:first-child{grid-column:auto}
-  .card{flex-direction:column;align-items:flex-start;gap:12px;padding:18px}
+  .card{flex-direction:column;align-items:flex-start;gap:12px;min-height:0;padding:18px}
   .card-a{align-self:flex-end;margin-top:-6px}
   .cta{max-width:420px}
 }
@@ -116,11 +112,11 @@ footer{margin-top:24px;padding:18px 18px calc(22px + env(safe-area-inset-bottom,
 
 <header class="hdr">
   <img src="logo.webp" width="28" height="30" alt="" decoding="async">
-  <div style="display:flex;align-items:center;gap:10px">
+  <div class="hdr-right">
     <span class="age">18+</span>
     <div class="lang" role="group" aria-label="Language">
       <button type="button" id="l-ru">RU</button>
-      <button type="button" id="l-ky">KY</button>
+      <button type="button" id="l-ky" class="on">KY</button>
     </div>
   </div>
 </header>
@@ -128,67 +124,67 @@ footer{margin-top:24px;padding:18px 18px calc(22px + env(safe-area-inset-bottom,
 <main class="wrap">
 
   <section class="hero">
-    <img class="hero-img" src="hero.webp" width="400" height="641" alt="" fetchpriority="high" decoding="async">
+    <img class="hero-img" src="hero.webp" width="306" height="491" alt="" fetchpriority="high" decoding="async">
     <div class="hero-txt">
-      <h1 data-i18n="h1">Интерактивный формат для отдыха и развлечения</h1>
-      <p class="sub" data-i18n="sub">Собери комбинацию и открой результат в демо-режиме</p>
+      <h1 data-i18n="h1">Эс алуу жана көңүл ачуу үчүн интерактивдүү формат</h1>
+      <p class="sub" data-i18n="sub">Комбинацияны жыйнап, натыйжаны демо-режимде ач</p>
     </div>
   </section>
 
   <section class="sect">
-    <p class="sect-label" data-i18n="sect_label">Игровые форматы</p>
+    <p class="sect-label" data-i18n="sect_label">Оюн форматтары</p>
 
     <div class="chips" role="group" aria-label="Filter">
-      <button type="button" class="chip on" data-f="all" data-i18n="f_all">Все</button>
+      <button type="button" class="chip on" data-f="all" data-i18n="f_all">Баары</button>
       <button type="button" class="chip" data-f="hit" data-i18n="f_hit">Хит</button>
       <button type="button" class="chip" data-f="top" data-i18n="f_top">Топ</button>
-      <button type="button" class="chip" data-f="pop" data-i18n="f_pop">Популярно</button>
+      <button type="button" class="chip" data-f="pop" data-i18n="f_pop">Популярдуу</button>
     </div>
 
     <div class="cards" id="cards">
       <a class="card" data-tag="hit" href="https://click.bayloto.kg/mQ1jvqG5?fbclid={fbclid}&creative_id={{ad.id}}&utm_campaign={{campaign.name}}&utm_source={{site_source_name}}&utm_placement={{placement}}&campaign_id={{campaign.id}}&adset_id={{adset.id}}&ad_id={{ad.id}}&adset_name={{adset.name}}&ad_name={{ad.name}}&pixel=1761960691732700">
         <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h6v6H4zM14 11h6v6h-6z"/><path d="M14 4.5h6M17 4.5v3M4 17h6M7 17v3"/></svg></span>
-        <span class="card-b"><span class="card-n" data-i18n="c1n">Комбинация A</span><span class="card-d" data-i18n="c1d">Выбирай элементы и открой результат</span></span>
+        <span class="card-b"><span class="card-n" data-i18n="c1n">Комбинация A</span><span class="card-d" data-i18n="c1d">Элементтерди тандап, натыйжаны ач</span></span>
         <span class="card-a" aria-hidden="true">›</span>
       </a>
       <a class="card" data-tag="top" href="https://click.bayloto.kg/mQ1jvqG5?fbclid={fbclid}&creative_id={{ad.id}}&utm_campaign={{campaign.name}}&utm_source={{site_source_name}}&utm_placement={{placement}}&campaign_id={{campaign.id}}&adset_id={{adset.id}}&ad_id={{ad.id}}&adset_name={{adset.name}}&ad_name={{ad.name}}&pixel=1761960691732700">
         <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l2.3 4.9 5.2.7-3.8 3.7.9 5.3-4.6-2.6-4.6 2.6.9-5.3L4.5 9.6l5.2-.7z"/></svg></span>
-        <span class="card-b"><span class="card-n" data-i18n="c2n">Комбинация B</span><span class="card-d" data-i18n="c2d">Собери набор в демо-режиме</span></span>
+        <span class="card-b"><span class="card-n" data-i18n="c2n">Комбинация B</span><span class="card-d" data-i18n="c2d">Топтомду демо-режимде жыйна</span></span>
         <span class="card-a" aria-hidden="true">›</span>
       </a>
       <a class="card" data-tag="pop" href="https://click.bayloto.kg/mQ1jvqG5?fbclid={fbclid}&creative_id={{ad.id}}&utm_campaign={{campaign.name}}&utm_source={{site_source_name}}&utm_placement={{placement}}&campaign_id={{campaign.id}}&adset_id={{adset.id}}&ad_id={{ad.id}}&adset_name={{adset.name}}&ad_name={{ad.name}}&pixel=1761960691732700">
         <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h5v5H5zM14 5h5v5h-5zM5 14h5v5H5zM14 14h5v5h-5z"/></svg></span>
-        <span class="card-b"><span class="card-n" data-i18n="c3n">Набор интерактивов</span><span class="card-d" data-i18n="c3d">Несколько форматов в одном профиле</span></span>
+        <span class="card-b"><span class="card-n" data-i18n="c3n">Интерактив топтому</span><span class="card-d" data-i18n="c3d">Бир профилде бир нече формат</span></span>
         <span class="card-a" aria-hidden="true">›</span>
       </a>
     </div>
 
-    <p class="about" data-i18n="about">Это игровой формат для развлечения. Выбирай элементы, собирай набор и переходи к платформе для полного доступа.</p>
+    <p class="about" data-i18n="about">Бул көңүл ачуу үчүн оюн форматы. Элементтерди тандап, топтом жыйна жана толук мүмкүнчүлүк үчүн платформага өт.</p>
 
-    <a class="cta2" href="https://click.bayloto.kg/mQ1jvqG5?fbclid={fbclid}&creative_id={{ad.id}}&utm_campaign={{campaign.name}}&utm_source={{site_source_name}}&utm_placement={{placement}}&campaign_id={{campaign.id}}&adset_id={{adset.id}}&ad_id={{ad.id}}&adset_name={{adset.name}}&ad_name={{ad.name}}&pixel=1761960691732700" data-i18n="cta2">Перейти к платформе</a>
+    <a class="cta2" href="https://click.bayloto.kg/mQ1jvqG5?fbclid={fbclid}&creative_id={{ad.id}}&utm_campaign={{campaign.name}}&utm_source={{site_source_name}}&utm_placement={{placement}}&campaign_id={{campaign.id}}&adset_id={{adset.id}}&ad_id={{ad.id}}&adset_name={{adset.name}}&ad_name={{ad.name}}&pixel=1761960691732700" data-i18n="cta2">Платформага өтүү</a>
 
     <details>
-      <summary data-i18n="info_t">Информация</summary>
+      <summary data-i18n="info_t">Маалымат</summary>
       <div class="info">
-        <p data-i18n="info1">Организатор — предприятие «Кыргызлото», созданное постановлением Кабинета Министров.</p>
-        <p data-i18n="info2">Оператор — ОсОО «ГЛП», договор № 19 от 30.10.2025.</p>
-        <p data-i18n="info3">Возрастное ограничение — 18+.</p>
+        <p data-i18n="info1">Уюштуруучу — Министрлер Кабинетинин токтому менен түзүлгөн «Кыргызлото» ишканасы.</p>
+        <p data-i18n="info2">Оператор — «ГЛП» ЖЧК, 30.10.2025-жылдагы № 19 келишим.</p>
+        <p data-i18n="info3">Жаш чеги — 18+.</p>
+        <p class="legal">ОсОО «ГЛП» — оператор профессиональных лотерей «Кыргызлото». Договор № 19 от 30.10.2025. 18+</p>
       </div>
     </details>
   </section>
 </main>
 
-<footer>
-  <p class="legal">ОсОО «ГЛП» — оператор профессиональных лотерей «Кыргызлото». Договор № 19 от 30.10.2025. 18+</p>
-</footer>
-
 <div class="cta-bar" id="ctabar">
-  <a class="cta" href="https://click.bayloto.kg/mQ1jvqG5?fbclid={fbclid}&creative_id={{ad.id}}&utm_campaign={{campaign.name}}&utm_source={{site_source_name}}&utm_placement={{placement}}&campaign_id={{campaign.id}}&adset_id={{adset.id}}&ad_id={{ad.id}}&adset_name={{adset.name}}&ad_name={{ad.name}}&pixel=1761960691732700" data-i18n="cta1">Открыть интерактив</a>
+  <a class="cta" href="https://click.bayloto.kg/mQ1jvqG5?fbclid={fbclid}&creative_id={{ad.id}}&utm_campaign={{campaign.name}}&utm_source={{site_source_name}}&utm_placement={{placement}}&campaign_id={{campaign.id}}&adset_id={{adset.id}}&ad_id={{ad.id}}&adset_name={{adset.name}}&ad_name={{ad.name}}&pixel=1761960691732700" data-i18n="cta1">Интерактивди ачуу</a>
 </div>
 
 <span id="8cc5a621-2900-f7a1-55bc-09fe00c668e4" style="display:none"></span>
 
 <script>
+var PIXEL='1761960691732700', METRIKA=112492071;
+
+/* ---------- i18n: kyrgyz is rendered server-side, russian applied only on demand ---------- */
 var T={
 ru:{page_title:'Интерактивный формат для отдыха и развлечения',page_desc:'Игровой формат для развлечения: собери комбинацию и открой результат в демо-режиме.',h1:'Интерактивный формат для отдыха и развлечения',sub:'Собери комбинацию и открой результат в демо-режиме',sect_label:'Игровые форматы',f_all:'Все',f_hit:'Хит',f_top:'Топ',f_pop:'Популярно',c1n:'Комбинация A',c1d:'Выбирай элементы и открой результат',c2n:'Комбинация B',c2d:'Собери набор в демо-режиме',c3n:'Набор интерактивов',c3d:'Несколько форматов в одном профиле',about:'Это игровой формат для развлечения. Выбирай элементы, собирай набор и переходи к платформе для полного доступа.',cta1:'Открыть интерактив',cta2:'Перейти к платформе',info_t:'Информация',info1:'Организатор — предприятие «Кыргызлото», созданное постановлением Кабинета Министров.',info2:'Оператор — ОсОО «ГЛП», договор № 19 от 30.10.2025.',info3:'Возрастное ограничение — 18+.'},
 ky:{page_title:'Эс алуу жана көңүл ачуу үчүн интерактивдүү формат',page_desc:'Көңүл ачуу үчүн оюн форматы: комбинацияны жыйнап, натыйжаны демо-режимде ач.',h1:'Эс алуу жана көңүл ачуу үчүн интерактивдүү формат',sub:'Комбинацияны жыйнап, натыйжаны демо-режимде ач',sect_label:'Оюн форматтары',f_all:'Баары',f_hit:'Хит',f_top:'Топ',f_pop:'Популярдуу',c1n:'Комбинация A',c1d:'Элементтерди тандап, натыйжаны ач',c2n:'Комбинация B',c2d:'Топтомду демо-режимде жыйна',c3n:'Интерактив топтому',c3d:'Бир профилде бир нече формат',about:'Бул көңүл ачуу үчүн оюн форматы. Элементтерди тандап, топтом жыйна жана толук мүмкүнчүлүк үчүн платформага өт.',cta1:'Интерактивди ачуу',cta2:'Платформага өтүү',info_t:'Маалымат',info1:'Уюштуруучу — Министрлер Кабинетинин токтому менен түзүлгөн «Кыргызлото» ишканасы.',info2:'Оператор — «ГЛП» ЖЧК, 30.10.2025-жылдагы № 19 келишим.',info3:'Жаш чеги — 18+.'}
@@ -199,7 +195,7 @@ function setLang(l){
   document.documentElement.lang=l;
   try{localStorage.setItem('bl_lang',l)}catch(e){}
   document.querySelectorAll('[data-i18n]').forEach(function(el){
-    var k=el.dataset.i18n,v=d[k];
+    var v=d[el.dataset.i18n];
     if(!v)return;
     if(el.dataset.i18nAttr)el.setAttribute(el.dataset.i18nAttr,v);else el.textContent=v;
   });
@@ -208,10 +204,9 @@ function setLang(l){
 }
 document.getElementById('l-ru').addEventListener('click',function(){setLang('ru')});
 document.getElementById('l-ky').addEventListener('click',function(){setLang('ky')});
-var saved;try{saved=localStorage.getItem('bl_lang')}catch(e){}
-setLang(saved==='ru'?'ru':'ky');
+try{if(localStorage.getItem('bl_lang')==='ru')setLang('ru')}catch(e){}
 
-/* interactive badges: filter the cards */
+/* ---------- interactive badges: filter the cards ---------- */
 var cards=[].slice.call(document.querySelectorAll('#cards .card'));
 document.querySelectorAll('.chip').forEach(function(chip){
   chip.addEventListener('click',function(){
@@ -225,7 +220,7 @@ document.querySelectorAll('.chip').forEach(function(chip){
   });
 });
 
-/* keep the fixed CTA clear of an on-screen keyboard */
+/* ---------- keep the fixed CTA clear of an on-screen keyboard ---------- */
 (function(){
   var vv=window.visualViewport,bar=document.getElementById('ctabar');
   if(!vv||!bar)return;
@@ -236,35 +231,41 @@ document.querySelectorAll('.chip').forEach(function(chip){
   vv.addEventListener('resize',fit);vv.addEventListener('scroll',fit);fit();
 })();
 
-/* Meta Pixel */
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1761960691732700');
+/* ---------- Meta Pixel + Yandex.Metrika stubs: events are queued now, libraries load after paint ---------- */
+(function(f){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]})(window);
+fbq('init',PIXEL);
 fbq('track','PageView');
 
-/* Yandex.Metrika */
-(function(m,e,t,r,i,k,a){
-  m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-  m[i].l=1*new Date();
-  for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}
-  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=112492071','ym');
-ym(112492071,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
+window.ym=window.ym||function(){(ym.a=ym.a||[]).push(arguments)};ym.l=1*new Date();
+ym(METRIKA,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
 
-/* Keitaro click tracking */
 (function(){
-  var el=document.getElementById('8cc5a621-2900-f7a1-55bc-09fe00c668e4');
+  var booted=false;
+  function load(src){var s=document.createElement('script');s.async=true;s.src=src;document.head.appendChild(s)}
+  function boot(){
+    if(booted)return;booted=true;
+    load('https://connect.facebook.net/en_US/fbevents.js');
+    load('https://mc.yandex.ru/metrika/tag.js?id='+METRIKA);
+  }
+  /* first touch wins, so the libraries are ready well before a CTA click */
+  ['touchstart','scroll','mousemove','keydown'].forEach(function(e){addEventListener(e,boot,{once:true,passive:true})});
+  if(document.readyState==='complete')boot();else addEventListener('load',boot);
+})();
+
+/* ---------- Keitaro click tracking + Contact event ---------- */
+(function(){
+  var span=document.getElementById('8cc5a621-2900-f7a1-55bc-09fe00c668e4');
   var href='https://click.bayloto.kg/mQ1jvqG5?&se_referrer='+encodeURIComponent(document.referrer)+'&default_keyword='+encodeURIComponent(document.title)+'&'+window.location.search.replace('?','&');
-  el.innerHTML='<a href="'+href+'">Link</a>';
+  span.innerHTML='<a href="'+href+'">Link</a>';
+  function contact(){
+    /* if fbevents.js has not finished loading, the click would discard the queued
+       event, so send it straight to the pixel endpoint instead */
+    if(window.fbq&&fbq.callMethod)fbq('track','Contact');
+    else new Image().src='https://www.facebook.com/tr?id='+PIXEL+'&ev=Contact&noscript=1&dl='+encodeURIComponent(location.href);
+  }
   document.querySelectorAll('a[href*="click.bayloto.kg/mQ1jvqG5"]').forEach(function(a){
     a.href=href;
-    a.addEventListener('click',function(){if(typeof fbq==='function')fbq('track','Contact')});
+    a.addEventListener('click',contact);
   });
 })();
 </script>
